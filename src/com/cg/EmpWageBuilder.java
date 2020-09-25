@@ -1,17 +1,32 @@
 package com.cg;
 
-//UC8
+//UC9
 public class EmpWageBuilder {
 	//Constants
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 	
-	public static void computeEmpWage(String company, int empRatePerHour, int noOfWorkingDays, int maxWorkingHours) {
+	//Instance Variables
+	private final String company;
+	private final int empRatePerHour;
+	private final int noOfWorkingDays;
+	private final int maxWorkingHours;
+	private int empWage;
+	
+	//Constructor
+	public EmpWageBuilder(String company, int empRatePerHour, int noOfWorkingDays, int maxWorkingHours) {
+		this.company = company;
+		this.empRatePerHour = empRatePerHour;
+		this.noOfWorkingDays = noOfWorkingDays;
+		this.maxWorkingHours = maxWorkingHours;
+	}
+	
+	//Method
+	public void computeEmpWage() {
 		//Variables
 		int empHrs = 0;
 		int totalHrs = 0;
 		int totalDays = 0;
-		int empWage = 0;
 		//Computation
 		while(totalHrs <= maxWorkingHours && totalDays <= noOfWorkingDays) {
 			totalDays++;
@@ -30,11 +45,19 @@ public class EmpWageBuilder {
 			System.out.println("Day : " + totalDays + "		Employee hours : " + empHrs);
 		}
 		empWage = totalHrs * empRatePerHour;
-		System.out.println("Employee wage for : "+ company + " is " + empWage);
+	}
+	
+	//@Override
+	public String toString() {
+		return "Employee wage for " + company + " is " + empWage;
 	}
 	
 	public static void main(String[] args) {
-		computeEmpWage("Capgemini", 20, 22, 100);
-		computeEmpWage("Wipro", 20, 22, 90);
+		EmpWageBuilder capg = new EmpWageBuilder("Capgemini", 20, 22, 100);
+		EmpWageBuilder wipro = new EmpWageBuilder("Wipro", 20, 22, 90);
+		capg.computeEmpWage();
+		System.out.println(capg);
+		wipro.computeEmpWage();
+		System.out.println(wipro);
 	}
 }
