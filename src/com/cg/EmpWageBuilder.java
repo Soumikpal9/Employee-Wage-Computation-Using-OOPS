@@ -1,6 +1,5 @@
 package com.cg;
 
-//UC9
 public class EmpWageBuilder {
 	//Constants
 	public static final int IS_PART_TIME = 1;
