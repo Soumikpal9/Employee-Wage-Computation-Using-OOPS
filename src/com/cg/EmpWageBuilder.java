@@ -1,9 +1,10 @@
 package com.cg;
 
-//UC2
+//UC3
 public class EmpWageBuilder {
 	//Constants
-	public static final int IS_FULL_TIME = 1;
+	public static final int IS_PART_TIME = 1;
+	public static final int IS_FULL_TIME = 2;
 	public static final int EMP_RATE_PER_HOUR = 20;
 	public static final int NO_OF_EMPLOYEES = 10;
 	
@@ -16,6 +17,9 @@ public class EmpWageBuilder {
 			double empcheck = Math.floor(Math.random() * 10) % 2;
 			if(empcheck == IS_FULL_TIME) {
 				empHrs = 8;
+			}
+			else if(empcheck == IS_PART_TIME) {
+				empHrs = 4;
 			}
 			else {
 				empHrs = 0;
