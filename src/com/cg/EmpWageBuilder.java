@@ -1,6 +1,6 @@
 package com.cg;
 
-public class EmpWageBuilder implements CompEmpWageIF {
+public class EmpWageBuilder {
 	//Constants
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
