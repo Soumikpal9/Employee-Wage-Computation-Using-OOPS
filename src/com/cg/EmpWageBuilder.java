@@ -1,28 +1,31 @@
 package com.cg;
+import java.util.*;
 
 public class EmpWageBuilder implements CompEmpWageIF {
 	//Constants
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 	
-	//Variables
-	public int noOfCompany = 0;
-	private CompEmpWage[] empWageArray;
+	private ArrayList<CompEmpWage> empWageArrList;
+	private Map<String, CompEmpWage> empWageMap;
 	
 	//Constructor
 	public EmpWageBuilder() {
-		empWageArray = new CompEmpWage[5];
+		empWageArrList = new ArrayList<>();
+		empWageMap = new HashMap<>();
 	}
 	
 	public void AddCompanyEmpWage(String company, int empRatePerHour, int noOfWorkingDays, int maxWorkingHours) {
-		empWageArray[noOfCompany] = new CompEmpWage(company, empRatePerHour, noOfWorkingDays, maxWorkingHours);
-		noOfCompany++;
+		CompEmpWage empWage = new CompEmpWage(company, empRatePerHour, noOfWorkingDays, maxWorkingHours);
+		empWageArrList.add(empWage);
+		empWageMap.put(company, empWage);
 	}
 	
 	public void ComputeEmpWage() {
-		for(int i=0;i<noOfCompany;i++) {
-			empWageArray[i].SetTotalEmpWage(this.ComputeEmpWage(empWageArray[i]));
-			System.out.println(empWageArray[i]);
+		for(int i=0;i<empWageArrList.size();i++) {
+			CompEmpWage empWage = empWageArrList.get(i);
+			empWage.SetTotalEmpWage(this.ComputeEmpWage(empWage));
+			System.out.println(empWage);
 		}
 	}
 	
