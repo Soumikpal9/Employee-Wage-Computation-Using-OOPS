@@ -6,11 +6,14 @@ public class EmpWageBuilder implements CompEmpWageIF {
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 	
+	private int finalWage = 0;
 	private ArrayList<CompEmpWage> empWageArrList;
+	private ArrayList<Integer> forTotalWage;
 	
 	//Constructor
 	public EmpWageBuilder() {
 		empWageArrList = new ArrayList<>();
+		forTotalWage = new ArrayList<>();
 	}
 	
 	public void AddCompanyEmpWage(String company, int empRatePerHour, int noOfWorkingDays, int maxWorkingHours) {
@@ -24,6 +27,10 @@ public class EmpWageBuilder implements CompEmpWageIF {
 			empWage.SetTotalEmpWage(this.ComputeEmpWage(empWage));
 			System.out.println(empWage);
 		}
+		for(int i=0;i<forTotalWage.size();i++) {
+			finalWage += forTotalWage.get(i);
+		}
+		System.out.println("The total wage for all the companies : " + finalWage);
 	}
 	
 	private int ComputeEmpWage(CompEmpWage empWage) {
@@ -46,6 +53,7 @@ public class EmpWageBuilder implements CompEmpWageIF {
 			totalHrs += empHrs;
 			System.out.println("Day : " + totalDays + "		Employee hours : " + empHrs);
 		}
+		forTotalWage.add(totalHrs * empWage.empRatePerHour);
 		return totalHrs * empWage.empRatePerHour;
 	}
 	
