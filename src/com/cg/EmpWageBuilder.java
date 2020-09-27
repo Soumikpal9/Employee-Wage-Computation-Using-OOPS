@@ -44,7 +44,6 @@ public class EmpWageBuilder implements CompEmpWageIF {
 				empHrs = 0;
 			}
 			totalHrs += empHrs;
-			System.out.println("Day : " + totalDays + "		Employee hours : " + empHrs);
 		}
 		return totalHrs * empWage.empRatePerHour;
 	}
