@@ -7,18 +7,15 @@ public class EmpWageBuilder implements CompEmpWageIF {
 	public static final int IS_FULL_TIME = 2;
 	
 	private ArrayList<CompEmpWage> empWageArrList;
-	private Map<String, CompEmpWage> empWageMap;
 	
 	//Constructor
 	public EmpWageBuilder() {
 		empWageArrList = new ArrayList<>();
-		empWageMap = new HashMap<>();
 	}
 	
 	public void AddCompanyEmpWage(String company, int empRatePerHour, int noOfWorkingDays, int maxWorkingHours) {
 		CompEmpWage empWage = new CompEmpWage(company, empRatePerHour, noOfWorkingDays, maxWorkingHours);
 		empWageArrList.add(empWage);
-		empWageMap.put(company, empWage);
 	}
 	
 	public void ComputeEmpWage() {
